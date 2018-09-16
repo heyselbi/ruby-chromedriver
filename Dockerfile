@@ -20,6 +20,6 @@ RUN wget http://ppa.launchpad.net/chromium-team/stable/ubuntu/pool/main/c/chromi
 RUN wget http://ppa.launchpad.net/chromium-team/stable/ubuntu/pool/main/c/chromium-browser/chromium-browser_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
 RUN wget http://ppa.launchpad.net/chromium-team/stable/ubuntu/pool/main/c/chromium-browser/chromium-chromedriver_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
 
-dpkg -i chromium-codecs-ffmpeg-extra_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
-dpkg -i chromium-browser_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb 
-dpkg -i chromium-chromedriver_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
+RUN dpkg -i chromium-codecs-ffmpeg-extra_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
+RUN dpkg -i chromium-browser_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb 
+RUN dpkg -i chromium-chromedriver_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
