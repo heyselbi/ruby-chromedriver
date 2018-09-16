@@ -23,5 +23,5 @@ RUN ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/c
 
 # INSTALL CHROME
 RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
-RUN wget wget https://www.slimjet.com/chrome/download-chrome.php\?file\=lnx%2Fchrome64_68.0.3440.84.deb
+RUN wget https://www.slimjet.com/chrome/download-chrome.php\?file\=lnx%2Fchrome64_68.0.3440.84.deb -O chrome64_68.0.3440.84.deb
 RUN dpkg -i chrome64_68.0.3440.84.deb
