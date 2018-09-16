@@ -12,14 +12,16 @@ RUN npm install --global yarn
 # Install bundler
 RUN gem install bundler --no-ri --no-rdoc
 
+# Install chromedirver
+ENV CHROMEDRIVER_VERSION=2.36 
+RUN mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION
+RUN curl -sS -o /tmp/chromedriver_linux64.zip http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip 
+RUN unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION 
+RUN rm /tmp/chromedriver_linux64.zip 
+RUN chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver 
+RUN ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver
 
-# INSTALL Chromium and chromedriver
-RUN apt-get install -yqq libasound2 && apt-get install -yqq libatk-bridge2.0-0 && apt-get install -yqq libgtk-3-0 && apt-get install -yqq libnspr4 && apt-get install -yqq libnss3 && apt-get install -yqq libxss1 && apt-get install -yqq libxtst6 && apt-get install -yqq xdg-utils
-
-RUN wget http://ppa.launchpad.net/chromium-team/stable/ubuntu/pool/main/c/chromium-browser/chromium-codecs-ffmpeg-extra_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
-RUN wget http://ppa.launchpad.net/chromium-team/stable/ubuntu/pool/main/c/chromium-browser/chromium-browser_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
-RUN wget http://ppa.launchpad.net/chromium-team/stable/ubuntu/pool/main/c/chromium-browser/chromium-chromedriver_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
-
-RUN dpkg -i chromium-codecs-ffmpeg-extra_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
-RUN dpkg -i chromium-browser_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb 
-RUN dpkg -i chromium-chromedriver_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
+# INSTALL CHROME
+RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
+RUN wget http://ftp.ubuntu.com/ubuntu/ubuntu/pool/universe/c/chromium-browser/chromium-browser_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
+RUN dpkg -i chromium-browser_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
