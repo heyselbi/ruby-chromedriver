@@ -23,5 +23,5 @@ RUN ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/c
 
 # INSTALL CHROME
 RUN apt-get install -yqq fonts-liberation && apt-get install -yqq libappindicator3-1 && apt-get install -yqq libasound2  && apt-get install -yqq libatk-bridge2.0-0 && apt-get install -yqq libgtk-3-0 && apt-get install -yqq libnspr4 && apt-get install -yqq libnss3 && apt-get install -yqq libxss1 && apt-get install -yqq libxtst6 && apt-get install -yqq xdg-utils
-RUN wget https://github.com/webnicer/chrome-downloads/blob/master/x64.deb/google-chrome-stable_68.0.3440.84-1_amd64.deb
+RUN wget https://github.com/kusumandaru/chrome-downloads/blob/master/x64.deb/google-chrome-stable_68.0.3440.84-1_amd64.deb
 RUN dpkg -i google-chrome-stable_68.0.3440.84-1_amd64.deb
