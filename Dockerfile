@@ -23,5 +23,5 @@ RUN ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/c
 
 # INSTALL CHROME
 RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
-RUN wget http://ftp.ubuntu.com/ubuntu/ubuntu/pool/universe/c/chromium-browser/chromium-browser_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
-RUN dpkg -i chromium-browser_67.0.3396.99-0ubuntu0.17.10.1_amd64.deb
+RUN wget wget https://www.slimjet.com/chrome/download-chrome.php\?file\=lnx%2Fchrome64_68.0.3440.84.deb
+RUN dpkg -i chrome64_68.0.3440.84.deb
