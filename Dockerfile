@@ -13,7 +13,7 @@ RUN npm install --global yarn
 RUN gem install bundler --no-ri --no-rdoc
 
 # Install chromedirver
-ENV CHROMEDRIVER_VERSION=2.41
+ENV CHROMEDRIVER_VERSION=2.36
 RUN mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION
 RUN curl -sS -o /tmp/chromedriver_linux64.zip http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip 
 RUN unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION 
