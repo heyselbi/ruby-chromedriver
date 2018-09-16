@@ -22,6 +22,7 @@ RUN chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver
 RUN ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver
 
 # INSTALL CHROMIUM
+RUN apt-get -yqq install software-properties-common
 RUN add-apt-repository -y ppa:chromium-team/stable
 RUN apt-get -yqq update
 RUN apt-get install -yqq chromium-browser
