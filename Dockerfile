@@ -22,6 +22,6 @@ RUN chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver
 RUN ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver
 
 # INSTALL CHROME
-RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
+RUN apt-get install -yqq fonts-liberation && apt-get install -yqq libappindicator3-1 && apt-get install -yqq libasound2  && apt-get install -yqq libatk-bridge2.0-0 && apt-get install -yqq libgtk-3-0 && apt-get install -yqq libnspr4 && apt-get install -yqq libnss3 && apt-get install -yqq libxss1 && apt-get install -yqq libxtst6 && apt-get install -yqq xdg-utils
 RUN wget https://www.slimjet.com/chrome/download-chrome.php\?file\=lnx%2Fchrome64_68.0.3440.84.deb -O chrome64_68.0.3440.84.deb
 RUN dpkg -i chrome64_68.0.3440.84.deb
