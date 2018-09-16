@@ -24,6 +24,6 @@ RUN ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/c
 # INSTALL CHROMIUM
 RUN apt-get -yqq install software-properties-common
 RUN add-apt-repository -y ppa:chromium-team/stable
-RUN apt-get -yqq update
+RUN apt-get -qq update
 RUN apt-get install -yqq chromium-browser
 
