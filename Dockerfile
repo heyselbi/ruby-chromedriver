@@ -12,7 +12,18 @@ RUN npm install --global yarn
 # Install bundler
 RUN gem install bundler --no-ri --no-rdoc
 
-# INSTALL CHROME
-RUN apt-get install -yqq fonts-liberation && apt-get install -yqq libappindicator3-1 && apt-get install -yqq libasound2  && apt-get install -yqq libatk-bridge2.0-0 && apt-get install -yqq libgtk-3-0 && apt-get install -yqq libnspr4 && apt-get install -yqq libnss3 && apt-get install -yqq libxss1 && apt-get install -yqq libxtst6 && apt-get install -yqq xdg-utils && apt-get install -yqq chromedriver
-RUN wget https://www.slimjet.com/chrome/download-chrome.php\?file\=lnx%2Fchrome64_68.0.3440.84.deb -O chrome64_68.0.3440.84.deb
-RUN dpkg -i chrome64_68.0.3440.84.deb
+# Install Chrome WebDriver
+RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
+    mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION && \
+    curl -sS -o /tmp/chromedriver_linux64.zip http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip && \
+    unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION && \
+    rm /tmp/chromedriver_linux64.zip && \
+    chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver && \
+    ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver
+
+# Install Google Chrome
+RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
+    apt-get -yqq update && \
+    apt-get -yqq install google-chrome-stable && \
+    rm -rf /var/lib/apt/lists/*
